@@ -1,0 +1,32 @@
+description: |
+  Sensor driver for the pixart PAW3950 mouse sensor 
+
+compatible: "pixart,paw3950"
+
+include: spi-device.yaml
+
+properties:
+  irq-gpios:
+    type: phandle-array
+    required: true
+  cpi:
+    type: int
+    default: 600
+    description: "CPI value (Range: 50 - 26000, Step: 50)"
+  swap-xy:
+    type: boolean
+  invert-x:
+    type: boolean
+  invert-y:
+    type: boolean
+  evt-type:
+    type: int
+    required: true
+  x-input-code:
+    type: int
+    required: true
+  y-input-code:
+    type: int
+    required: true
+  force-awake:
+    type: boolean
