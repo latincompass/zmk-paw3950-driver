@@ -1,0 +1,16 @@
+manifest:
+  remotes:
+    # START #####
+    - name: badjeff
+      url-base: https://github.com/badjeff
+    # END #######
+
+  projects:
+    # START #####
+    - name: zmk-paw3950-driver
+      remote: badjeff
+      revision: main
+    # END #######
+
+  self:
+    path: config
