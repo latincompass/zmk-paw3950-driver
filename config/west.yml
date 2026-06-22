@@ -4,8 +4,6 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: badjeff
       url-base: https://github.com/badjeff
-    - name: zephyrproject-rtos
-      url-base: https://github.com/zephyrproject-rtos
 
   projects:
     - name: zmk
@@ -16,7 +14,6 @@ manifest:
     - name: zmk-paw3950-driver
       remote: badjeff
       revision: main
-      path: modules/zmk-paw3950-driver
 
   self:
     path: config
