@@ -14,12 +14,10 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-        with:
-          path: config
 
       - name: Initialize west workspace
         run: |
-          west init -l config
+          west init -l .
           west update --narrow -o=--depth=1 2>&1 | head -n 100
           west zephyr-export
 
