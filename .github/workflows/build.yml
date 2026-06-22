@@ -14,19 +14,23 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          path: config
 
       - name: Initialize west workspace
         run: |
           west init -l config
-          west update
+          west update --narrow -o=--depth=1 2>&1 | head -n 100
           west zephyr-export
 
       - name: Build ZMK Firmware
         run: |
-          west build -d config/boards/xiao_ble -b seeed_xiao_ble -- -DSHIELD=paw3950
+          west build -d build/seeed_xiao_ble -b seeed_xiao_ble -- -DZMK_CONFIG=${GITHUB_WORKSPACE}/config
 
       - name: Upload built firmware
         uses: actions/upload-artifact@v4
         with:
-          name: zmk-firmware
-          path: build/zephyr/zmk.uf2
+          name: zmk-firmware-seeed_xiao_ble
+          path: |
+            build/seeed_xiao_ble/zephyr/*.uf2
+            build/seeed_xiao_ble/zephyr/*.hex
